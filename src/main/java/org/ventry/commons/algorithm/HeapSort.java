@@ -1,4 +1,4 @@
-package org.ventry.commons.algorithm.sort;
+package org.ventry.commons.algorithm;
 
 import org.ventry.commons.utils.ArrayUtils;
 
