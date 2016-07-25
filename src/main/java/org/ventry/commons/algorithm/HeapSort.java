@@ -42,7 +42,7 @@ public class HeapSort {
         }
     }
 
-	private static void buildMaxHeap(int source[]) {
+	private static void buildMaxHeap(int[] source) {
 		for (int i = source.length / 2; i > -1; i--) {
 			maxHeapify(source, i, source.length);
 		}
@@ -58,5 +58,4 @@ public class HeapSort {
 
 		return source;
 	}
-
 }
