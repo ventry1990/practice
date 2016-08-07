@@ -5,13 +5,10 @@ import org.ventry.commons.utils.Console;
 
 import java.util.Arrays;
 
-/**
- * Hello world!
- */
 public class App {
 
     public static void main(String[] args) {
-        int arraySize = 1000000;
+        int arraySize = 10000000;
         int[] arrays = ArrayUtils.randomIntArrays(arraySize);
         // Console.write(20, arrays);
 
@@ -38,7 +35,7 @@ public class App {
         }
         Console.writeLine("heap sort cost:" + (System.nanoTime() - start) / 1000000 + "ms");
 
-        // array.size in [300, *) heap-sort's performance approaches to insertion-sort, worse than heap sort
+        // array.size in [300, *) quick sort's performance approaches to insertion-sort, worse than heap sort
         start = System.nanoTime();
         for (int i = 0; i < iterator; i++) {
             QuickSort.tailRecursiveOrder(Arrays.copyOf(arrays, arraySize), 0, arraySize - 1);
@@ -58,5 +55,7 @@ public class App {
             bitmapSort.order(Arrays.copyOf(arrays, arraySize), arraySize + 1);
         }
         Console.writeLine("bitmap sort cost:" + (System.nanoTime() - start) / 1000000 + "ms");
+
+        Console.writeLine(OrderStatistics.select(arrays, 0, arraySize - 1, 4));
     }
 }

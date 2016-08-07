@@ -30,7 +30,7 @@ public class QuickSort {
         return source;
     }
 
-    private static int partition(int[] source, int startIndex, int endIndex) {
+    public static int partition(int[] source, int startIndex, int endIndex) {
         int randomIndex = random.nextInt(endIndex - startIndex) + startIndex;
         ArrayUtils.swap(source, startIndex, randomIndex);
 
