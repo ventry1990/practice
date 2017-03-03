@@ -31,8 +31,8 @@ public class MaxHeap {
 
     private void maxHeapify(int i, int heapSize) {
         while (i <= heapSize / 2) {
-            int left = 2 * (i + 1) - 1;
-            int right = 2 * (i + 1);
+            int left = ((i + 1) << 1) - 1;
+            int right = (i + 1) << 1;
             int max = i;
             if (left < heapSize && data[left] > data[max])
                 max = left;

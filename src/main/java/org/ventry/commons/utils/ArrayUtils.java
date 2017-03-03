@@ -50,4 +50,12 @@ public class ArrayUtils {
         base[sourceIndex] = base[targetIndex];
         base[targetIndex] = temp;
     }
+
+    public static int sum(int[] base) {
+        int sum = 0;
+        for (int i : base) {
+            sum += i;
+        }
+        return sum;
+    }
 }
