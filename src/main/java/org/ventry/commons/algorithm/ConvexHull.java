@@ -18,20 +18,13 @@ public class ConvexHull {
 
     private final Set<Point> CONVEX_POINTS = new HashSet<>();
 
-    private static class Point implements Comparable<Point> {
+    private static class Point {
         private final double x;
         private final double y;
 
         Point(double x, double y) {
             this.x = x;
             this.y = y;
-        }
-
-        @Override
-        public int compareTo(Point point) {
-            assert point != null;
-
-            return x - point.x < 0 ? -1 : (x == point.x ? 0 : 1);
         }
 
         @Override
@@ -84,6 +77,22 @@ public class ConvexHull {
                     - start.x * judged.y - end.x * start.y - judged.x * end.y);
         }
 
+        public double dotProduct(Vector one) {
+            return (end.x - start.x) * (one.end.x - one.start.x)
+                    + (end.y - start.y) * (one.end.y - one.start.y);
+        }
+
+        public double length() {
+            return Math.sqrt(Math.pow(end.x - start.x, 2D) + Math.pow(end.y - start.y, 2D));
+        }
+
+        public double cosin(Vector one) {
+            assert length() > 0;
+            assert one.length() > 0;
+
+            return dotProduct(one) / (length() * one.length());
+        }
+
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
@@ -134,7 +143,15 @@ public class ConvexHull {
         public Point locate(Collection<Point> set) {
             Point[] points = new Point[set.size()];
             set.toArray(points);
-            Arrays.sort(points);
+            Arrays.sort(points, new Comparator<Point>() {
+                @Override
+                public int compare(Point o1, Point o2) {
+                    assert o1 != null;
+                    assert o2 != null;
+
+                    return o1.x - o2.x < 0 ? -1 : (o1.x == o2.x ? 0 : 1);
+                }
+            });
 
             return points[points.length - 1];
         }
@@ -162,6 +179,28 @@ public class ConvexHull {
         }
     }
 
+    private static class MinIncludedAngleFromVector implements LocatingStrategy {
+        private Vector vector;
+
+        MinIncludedAngleFromVector(Vector vector) {
+            this.vector = vector;
+        }
+
+        @Override
+        public Point locate(Collection<Point> set) {
+            double maxCosin = -1D;
+            Point marked = null;
+            for (Point point : set) {
+                Vector one = new Vector(vector.end, point);
+                double currentCosin = vector.cosin(one);
+                if (currentCosin > maxCosin) {
+                    maxCosin = currentCosin;
+                    marked = point;
+                }
+            }
+            return marked;
+        }
+    }
 
     public void divideAndConquer(Set<Point> source) {
         CONVEX_POINTS.clear();
@@ -214,12 +253,37 @@ public class ConvexHull {
         recursiveFindConvexPoint(new Vector(maxPoint, base.end), negativeSet);
     }
 
+    public void jarvisStepping(Set<Point> source) {
+        CONVEX_POINTS.clear();
+        if (CollectionUtils.isEmpty(source))
+            return;
+
+        Set<Point> points = new HashSet<>(source);
+        Point origin = new OriginLocation().locate(points);
+        Point initPoint = new Point(origin.x, origin.y + 1D);
+        CONVEX_POINTS.add(origin);
+
+        Vector base = new Vector(initPoint, origin);
+        while (true) {
+            Point marked = new MinIncludedAngleFromVector(base).locate(points);
+
+            CONVEX_POINTS.add(marked);
+            if (origin.equals(marked)) {
+                return;
+            } else {
+                base = new Vector(base.end, marked);
+                points.remove(marked);
+            }
+        }
+    }
+
     public Set<Point> getConvexHull() {
         return CONVEX_POINTS;
     }
 
     public static void main(String[] args) {
-        for (int i = 0; i < 10; i++) {
+        int iter = 10;
+        for (int i = 0; i < iter; i++) {
             Console.writeLine("iter" + i + ": ");
             Set<Point> points = new HashSet<>();
             for (int j = 0; j < 100; j++) {
