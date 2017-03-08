@@ -1,6 +1,6 @@
 package org.ventry.commons.algorithm;
 
-import org.ventry.commons.utils.CollectionUtils;
+import org.apache.commons.collections.CollectionUtils;
 import org.ventry.commons.utils.Console;
 
 import java.util.*;

@@ -1,5 +1,6 @@
 package org.ventry.commons.utils;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class ArrayUtils {
@@ -45,6 +46,36 @@ public class ArrayUtils {
         }
 
         return arrays;
+    }
+
+    public static double[] randomDoubleArrays(int size) {
+        double[] arrays = new double[size];
+        for (int i = 0; i < size; i++)
+            arrays[i] = i;
+
+        randomize(arrays);
+        return arrays;
+    }
+
+    public static double[] randomDoubleArrays(int seed, int size) {
+        double[] arrays = new double[seed];
+        for (int i = 0; i < seed; i++)
+            arrays[i] = i;
+
+        randomize(arrays);
+        return Arrays.copyOf(arrays, size);
+    }
+
+    private static void randomize(double[] arrays) {
+        int size = arrays.length;
+        for (int i = 0; i < size; i++) {
+            double key = arrays[i];
+            int index = new Random().nextInt(size - i) + i;
+            if (i != index) {
+                arrays[i] = arrays[index];
+                arrays[index] = key;
+            }
+        }
     }
 
     public static void swap(int[] base, int sourceIndex, int targetIndex) {
