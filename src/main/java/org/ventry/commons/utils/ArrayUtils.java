@@ -91,9 +91,17 @@ public class ArrayUtils {
     }
 
     public static int sum(int[] base) {
+        return sum(base, 0, base.length);
+    }
+
+    public static int sum(int[] base, int startIndex, int endIndex) {
+        assert startIndex >= 0;
+        assert startIndex < endIndex;
+        assert endIndex <= base.length;
+
         int sum = 0;
-        for (int i : base) {
-            sum += i;
+        for (int i = startIndex; i < endIndex; i++) {
+            sum += base[i];
         }
         return sum;
     }
