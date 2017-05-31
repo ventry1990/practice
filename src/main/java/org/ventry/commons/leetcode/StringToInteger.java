@@ -16,20 +16,20 @@ public class StringToInteger {
         char[] chars = str.trim().toCharArray();
         boolean symbolAtFirstChar = chars[0] == '-' || chars[0] == '+';
         int symbol = chars[0] == '-' ? -1 : 1;
-        long total = 0;
+        double total = 0;
         for (int i = symbolAtFirstChar ? 1 : 0; i < chars.length; i++) {
             if (48 > chars[i] || chars[i] > 57)
                 break;
 
-            int tail = chars[i] - '0';
+            int tail = chars[i] - 48;
 
             total = total * 10 + tail;
         }
 
-        long result = total * symbol;
-        if (result > Integer.MAX_VALUE) return Integer.MAX_VALUE;
-        else if (result < Integer.MIN_VALUE) return Integer.MIN_VALUE;
-        else return (int) result;
+        total = total * symbol;
+        if (total > Integer.MAX_VALUE) return Integer.MAX_VALUE;
+        else if (total < Integer.MIN_VALUE) return Integer.MIN_VALUE;
+        else return (int) total;
     }
 
     public int atoi2(String str) {
