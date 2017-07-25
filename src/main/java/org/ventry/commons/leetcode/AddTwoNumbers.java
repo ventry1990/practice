@@ -10,15 +10,6 @@ import java.util.Random;
  */
 
 public class AddTwoNumbers {
-    class ListNode {
-        int val;
-        ListNode next;
-
-        public ListNode(int x) {
-            val = x;
-        }
-    }
-
     class LinkedList {
         ListNode head;
         ListNode tail;
@@ -73,13 +64,13 @@ public class AddTwoNumbers {
 
     public static void main(String[] args) {
         LinkedList l1 = new AddTwoNumbers().new LinkedList();
-        l1.add(new AddTwoNumbers().new ListNode(2));
-        l1.add(new AddTwoNumbers().new ListNode(4));
-        l1.add(new AddTwoNumbers().new ListNode(3));
+        l1.add(new ListNode(2));
+        l1.add(new ListNode(4));
+        l1.add(new ListNode(3));
         LinkedList l2 = new AddTwoNumbers().new LinkedList();
-        l2.add(new AddTwoNumbers().new ListNode(5));
-        l2.add(new AddTwoNumbers().new ListNode(6));
-        l2.add(new AddTwoNumbers().new ListNode(4));
+        l2.add(new ListNode(5));
+        l2.add(new ListNode(6));
+        l2.add(new ListNode(4));
         print(l1.getHead());
         print(l2.getHead());
         System.out.println();
@@ -88,29 +79,29 @@ public class AddTwoNumbers {
         print(new AddTwoNumbers().plus(l1.getHead(), null));
 
         l1 = new AddTwoNumbers().new LinkedList();
-        l1.add(new AddTwoNumbers().new ListNode(2));
-        l1.add(new AddTwoNumbers().new ListNode(4));
-        l1.add(new AddTwoNumbers().new ListNode(9));
+        l1.add(new ListNode(2));
+        l1.add(new ListNode(4));
+        l1.add(new ListNode(9));
         l2 = new AddTwoNumbers().new LinkedList();
-        l2.add(new AddTwoNumbers().new ListNode(5));
-        l2.add(new AddTwoNumbers().new ListNode(6));
-        l2.add(new AddTwoNumbers().new ListNode(7));
-        l2.add(new AddTwoNumbers().new ListNode(9));
-        l2.add(new AddTwoNumbers().new ListNode(9));
+        l2.add(new ListNode(5));
+        l2.add(new ListNode(6));
+        l2.add(new ListNode(7));
+        l2.add(new ListNode(9));
+        l2.add(new ListNode(9));
         print(new AddTwoNumbers().plus(l1.getHead(), l2.getHead()));
 
         l1 = new AddTwoNumbers().new LinkedList();
         l2 = new AddTwoNumbers().new LinkedList();
         for(int i = 0; i < 100; i++) {
-            l1.add(new AddTwoNumbers().new ListNode(new Random().nextInt(9)));
-            l2.add(new AddTwoNumbers().new ListNode(new Random().nextInt(9)));
+            l1.add(new ListNode(new Random().nextInt(9)));
+            l2.add(new ListNode(new Random().nextInt(9)));
         }
         print(new AddTwoNumbers().plus(l1.getHead(), l2.getHead()));
     }
 
     static void print(ListNode head) {
         while (head != null) {
-            System.out.print(head.val + "->");
+            System.out.print(head);
             head = head.next;
         }
         System.out.println();
