@@ -16,7 +16,7 @@ public class LDistance {
     }
 
     private static int computeEditDistance(String str1, String str2) {
-        int distance[][];    //矩阵
+        int distance[][];
         int lengthOfStr1 = str1.length();
         int lengthOfStr2 = str2.length();
         if (lengthOfStr1 == 0) {
@@ -26,26 +26,17 @@ public class LDistance {
             return lengthOfStr1;
         }
         distance = new int[lengthOfStr1 + 1][lengthOfStr2 + 1];
-        for (int i = 0; i <= lengthOfStr1; i++) {    //初始化第一列
+        for (int i = 0; i <= lengthOfStr1; i++) {
             distance[i][0] = i;
         }
-        for (int j = 0; j <= lengthOfStr2; j++) {    //初始化第一行
+        for (int j = 0; j <= lengthOfStr2; j++) {
             distance[0][j] = j;
         }
 
-        int temp;//记录相同字符,在某个矩阵位置值的增量,不是0就是1
-        for (int i = 1; i <= lengthOfStr1; i++) {//遍历str1
+        for (int i = 1; i <= lengthOfStr1; i++) {
             char ch1 = str1.charAt(i - 1);
-
-            //去匹配str2
             for (int j = 1; j <= lengthOfStr2; j++) {
-                char ch2 = str2.charAt(j - 1);
-                if (ch1 == ch2) {
-                    temp = 0;
-                } else {
-                    temp = 1;
-                }
-                //左边+1, 上边+1, 左上角+temp取最小
+                int temp = ch1 == str2.charAt(j - 1) ? 0 : 1;
                 distance[i][j] = min(distance[i - 1][j] + 1, distance[i][j - 1] + 1, distance[i - 1][j - 1] + temp);
             }
         }
