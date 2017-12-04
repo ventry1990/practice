@@ -39,4 +39,37 @@ public class MultiplyStrings {
         }
         return builder.length() == 0 ? "0" : builder.toString();
     }
+
+    public String add(String num1, String num2) {
+        if (num1.equals("0"))
+            return num2;
+        if (num2.equals("0"))
+            return num1;
+        if (num1.length() < num2.length())
+            return add(num2, num1);
+
+        int num1Length = num1.length();
+        int num2Length = num2.length();
+        int[] res = new int[num1Length + 1];
+        for (int i = 0; i < num2Length; i++) {
+            res[i] = num1.charAt(num1Length - 1 - i) + num2.charAt(num2Length - 1 - i) - 96;
+        }
+
+        for (int i = num2Length; i < num1Length; i++) {
+            res[i] = num1.charAt(num1Length - 1 - i) - 48;
+        }
+
+        for (int i = 0; i < res.length; i++) {
+            if (res[i] > 9) {
+                res[i + 1] += res[i] / 10;
+                res[i] = res[i] % 10;
+            }
+        }
+
+        StringBuilder builder = new StringBuilder();
+        for (int i = res[res.length - 1] == 0 ? res.length - 2 : res.length - 1; i > -1; i--) {
+            builder.append(res[i]);
+        }
+        return builder.toString();
+    }
 }
