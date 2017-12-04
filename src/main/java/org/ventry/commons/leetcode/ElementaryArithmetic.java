@@ -45,11 +45,11 @@ public class ElementaryArithmetic {
         long y = Math.abs((long) multiplier);
         long res = 0;
         while (y > 0) {
-            if ((y & 1) == 1) {
+            if ((y & 1) == 1)
                 res += x;
-                y >>= 1;
-                x <<= 1;
-            }
+
+            x <<= 1;
+            y >>= 1;
         }
 
         if (negative) {
