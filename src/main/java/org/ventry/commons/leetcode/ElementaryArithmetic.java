@@ -82,4 +82,28 @@ public class ElementaryArithmetic {
         y = ElementaryArithmetic.plus(~y, 1);// 补码
         return ElementaryArithmetic.plus(x, y);
     }
+
+    static double pow(double x, int n) {
+        if (n == 0)
+            return 1D;
+
+        boolean negative = n < 0;
+        if (negative) {
+            x = 1 / x;
+            n = -(n + 1);
+        }
+
+        double res = 1;
+        double temp = x;
+        while (n > 0) {
+            if (n % 2 != 0) {
+                res = res * temp;
+            }
+            temp *= temp;
+            n = n / 2;
+
+        }
+
+        return negative ? res * x : res;
+    }
 }
