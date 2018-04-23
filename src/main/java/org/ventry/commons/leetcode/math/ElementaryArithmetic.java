@@ -105,4 +105,47 @@ public class ElementaryArithmetic {
 
         return negative ? res * x : res;
     }
+
+    static int sqrt(int x) {
+        int lo = 0;
+        int hi = x;
+        while (lo < hi) {
+            int mid = (lo + hi) >> 1;
+            double temp = Math.pow(mid, 2);
+            if (temp == x) {
+                return mid;
+            } else if (temp < x) {
+                lo = mid + 1;
+            } else {
+                hi = mid - 1;
+            }
+        }
+
+        return lo * lo > x ? lo - 1 : lo;
+    }
+
+    static int sqrt2(int x) {
+        if (x == 0) {
+            return 0;
+        }
+
+        int start = 1;
+        int end = x;
+        // Find the last position whose square is <= x
+        while (start + 1 < end) {
+            int mid = start + (end - start) / 2;
+            //Same to mid * mid >x. Use divide to avoid overflow
+            if (mid > x / mid) {
+                end = mid;
+            } else {
+                start = mid;
+            }
+        }
+
+        //Same to end * end <= x. Use divide to avoid overflow
+        if (end <= x / end) {
+            return end;
+        }
+        return start;
+    }
 }
