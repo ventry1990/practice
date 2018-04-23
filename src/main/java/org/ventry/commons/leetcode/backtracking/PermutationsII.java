@@ -16,7 +16,6 @@ public class PermutationsII {
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         if (nums != null && nums.length > 0) {
-            Arrays.sort(nums);
             find(nums, 0, res);
         }
         return res;
