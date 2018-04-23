@@ -79,15 +79,19 @@ public class ArrayUtils {
     }
 
     public static void swap(int[] base, int sourceIndex, int targetIndex) {
-        int temp = base[sourceIndex];
-        base[sourceIndex] = base[targetIndex];
-        base[targetIndex] = temp;
+        if (sourceIndex != targetIndex) {
+            int temp = base[sourceIndex];
+            base[sourceIndex] = base[targetIndex];
+            base[targetIndex] = temp;
+        }
     }
 
     public static <T> void swap(T[] base, int sourceIndex, int targetIndex) {
-        T temp = base[sourceIndex];
-        base[sourceIndex] = base[targetIndex];
-        base[targetIndex] = temp;
+        if (sourceIndex != targetIndex) {
+            T temp = base[sourceIndex];
+            base[sourceIndex] = base[targetIndex];
+            base[targetIndex] = temp;
+        }
     }
 
     public static int sum(int[] base) {
