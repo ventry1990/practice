@@ -25,7 +25,7 @@ public class Perceptron {
      * @param eta     学习能力，η∈[0, 1]
      * @return (w, b)
      */
-    static float[] sgd(int[][] samples, float eta) {
+    private static float[] sgd(int[][] samples, float eta) {
         assert samples != null;
 
         float[] w = new float[samples[0].length - 1];

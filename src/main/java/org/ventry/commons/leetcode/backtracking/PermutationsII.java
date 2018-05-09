@@ -42,7 +42,7 @@ public class PermutationsII {
     /**
      * [startInclude, endExclude)区间内不能有元素与src[endExclude]重复，否则
      * 交换之后，[startInclude, endExclude]区间内存在重复元素，即存在重复的全排
-     * 序列（子集）。
+     * 序列（子集）
      */
     private boolean canSwap(int[] src, int startInclude, int endExclude) {
         for (int i = startInclude; i < endExclude; i++) {

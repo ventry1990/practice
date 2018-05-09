@@ -1,7 +1,5 @@
 package org.ventry.commons.algorithm;
 
-import sun.jvm.hotspot.utilities.Assert;
-
 /**
  * Created by ventry on 16/7/30.
  */
@@ -19,6 +17,7 @@ public class CountingSort {
             countingPool[i] += countingPool[i - 1];
         }
 
+        // countingPool[source[source.length - 1] = source.length
         for (int i = source.length - 1; i > -1; i--) {
             target[countingPool[source[i]] - 1] = source[i];
             countingPool[source[i]]--;
@@ -27,9 +26,9 @@ public class CountingSort {
     }
 
     public static int statsNumberInRange(int[] source, int bound, int lowerBound, int upperBound) {
-        Assert.that(lowerBound > -1, "lower bound is overflow");
-        Assert.that(lowerBound <= upperBound, "lower bound should smaller than upper bound");
-        Assert.that(upperBound < bound, "upper bound is overflow");
+        // Assert.that(lowerBound > -1, "lower bound is overflow");
+        // Assert.that(lowerBound <= upperBound, "lower bound should smaller than upper bound");
+        // Assert.that(upperBound < bound, "upper bound is overflow");
 
         int[] countingPool = new int[bound];
 
