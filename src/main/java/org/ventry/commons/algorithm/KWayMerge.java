@@ -116,7 +116,7 @@ public class KWayMerge {
     }
 
     public static int[] merge1(int[] one, int[] two, int[] three) {
-        //Assert.isNotEmpty(one, two, three);
+        // Assert.isNotEmpty(one, two, three);
 
         int[] target = new int[one.length + two.length + three.length];
         MaxHeap maxHeap = new MaxHeap(null);
@@ -140,7 +140,7 @@ public class KWayMerge {
     }
 
     public List<Integer> merge(List<int[]> arrays) {
-        //Assert.isNotEmpty(arrays)
+        // Assert.isNotEmpty(arrays)
         MinHeap minHeap = new MinHeap(null);
         int[] cursors = initCursors(arrays.size());
 

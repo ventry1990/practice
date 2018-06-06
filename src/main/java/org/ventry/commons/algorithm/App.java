@@ -48,7 +48,7 @@ public class App {
         }
         Console.writeLine("counting sort cost:" + (System.nanoTime() - start) / 1000000 + "ms");
 
-        // the fastest and the most restrictive, such as discarding satellite data
+        // The fastest and the most restrictive, such as discarding satellite data
         BitmapSort bitmapSort = new BitmapSort(4);
         start = System.nanoTime();
         for (int i = 0; i < iterator; i++) {

@@ -4,8 +4,12 @@ import java.util.List;
 
 public class Console {
     public static void writeLine(Object... objects) {
-        for (Object object : objects) {
-            System.out.println(object);
+        if (objects == null || objects.length == 0) {
+            System.out.println();
+        } else {
+            for (Object object : objects) {
+                System.out.println(object);
+            }
         }
     }
 

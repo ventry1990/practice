@@ -134,7 +134,7 @@ public class ElementaryArithmetic {
         // Find the last position whose square is <= x
         while (start + 1 < end) {
             int mid = start + (end - start) / 2;
-            //Same to mid * mid >x. Use divide to avoid overflow
+            // Same to mid * mid >x. Use divide to avoid overflow
             if (mid > x / mid) {
                 end = mid;
             } else {
@@ -142,7 +142,7 @@ public class ElementaryArithmetic {
             }
         }
 
-        //Same to end * end <= x. Use divide to avoid overflow
+        // Same to end * end <= x. Use divide to avoid overflow
         if (end <= x / end) {
             return end;
         }

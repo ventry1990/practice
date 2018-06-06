@@ -29,7 +29,7 @@ public class RomanToInteger {
         if (s == null || s.length() == 0)
             return result;
 
-        // assert map.containsKey(s.charAt([0, s.length())));
+        // Assert map.containsKey(s.charAt([0, s.length())));
         int sLength = s.length();
         int pre = map.get(s.charAt(0));
         result = pre;

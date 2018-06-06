@@ -5,13 +5,13 @@ package org.ventry.commons.algorithm;
  */
 public class BitmapSort {
 
-    private final int repeat;//upper bound of the repeat times of a number = power(2, repeat) - 1
+    private final int repeat;// Upper limit of the repeat times of a number = power(2, repeat) - 1
     private final int shift;
     private final int mod;
     private final int mask;
 
     public BitmapSort(int repeat) {
-        //Assert.isTrue(repeat in [0, 32]);
+        // Assert.isTrue(repeat in [0, 32]);
         this.repeat = repeat;
         this.shift = 5;
         this.mod = 0x1f;

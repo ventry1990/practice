@@ -2,6 +2,8 @@ package org.ventry.commons.algorithm.dp;
 
 import org.ventry.commons.utils.Console;
 
+import java.util.StringJoiner;
+
 /**
  * file: org.ventry.commons.algorithm.dp.RodCutting
  * author: ventry
@@ -25,6 +27,9 @@ public class RodCutting {
         for (int i = 1; i <= length; i++) {
             int maxProfit = Integer.MIN_VALUE;
             for (int j = 1; j <= i; j++) {
+                // When `length` great than `prices.length`, than means `length's cutting` can be
+                // divided into several sub-questions, and each sub-question's input is less than
+                // or equals to `prices.length` and the sum of them equals to `length`.
                 int curProfit = prices[j - 1] + result[i - j];
                 if (maxProfit < curProfit) {
                     maxProfit = curProfit;
@@ -39,19 +44,21 @@ public class RodCutting {
     }
 
     private void printSolution(int length) {
+        StringJoiner joiner = new StringJoiner("|");
         while (length > 0) {
-            System.out.print(solution[length] + " | ");
+            joiner.add(String.valueOf(solution[length]));
             length = length - solution[length];
         }
-        System.out.println();
+        Console.writeLine("solution: " + joiner.toString());
     }
 
     public static void main(String[] args) {
         int[] p = new int[]{1, 5, 8, 9, 10, 17, 17, 20, 24, 30};
         RodCutting rodCutting = new RodCutting(p);
         for (int i = 0; i <= p.length; i++) {
-            Console.writeLine("\n>> " + i + ": ");
-            Console.writeLine(rodCutting.cut(i));
+            Console.writeLine("length: " + i);
+            Console.writeLine("profit: " + rodCutting.cut(i));
+            Console.writeLine();
         }
     }
 }

@@ -45,9 +45,9 @@ public class ThreeSum {
             return result;
         }
 
-        Arrays.sort(nums);//对数组进行排序
+        Arrays.sort(nums);// 对数组进行排序
 
-        for (int i = 0; i < len - 2; i++) { //
+        for (int i = 0; i < len - 2; i++) {
             if (nums[i] > 0) {
                 break;
             }
@@ -68,9 +68,9 @@ public class ThreeSum {
 
         while (start < end) {
             res = nums[start] + nums[end];
-            if (res > target) { //正数值太大，减少end值
+            if (res > target) { // 正数值太大，减少end值
                 end--;
-            } else if (res < target) {//负数值太小，增加负数值
+            } else if (res < target) {// 负数值太小，增加负数值
                 start++;
             } else {
                 result.add(Arrays.asList(nums[baseIndex], nums[start], nums[end]));
