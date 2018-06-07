@@ -42,4 +42,24 @@ public class Console {
         }
         System.out.println();
     }
+
+    public static void write2D(int[][] arrays) {
+        for (int[] array : arrays) {
+            for (int val : array) {
+                System.out.print(String.format("%6d\t", val));
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    public static void write2D(double[][] arrays) {
+        for (double[] array : arrays) {
+            for (double val : array) {
+                System.out.print(String.format("%10.4f\t", ((int) (val * 1E5)) / 1E5));
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
 }
