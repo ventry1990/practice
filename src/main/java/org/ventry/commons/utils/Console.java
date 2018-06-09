@@ -43,6 +43,16 @@ public class Console {
         System.out.println();
     }
 
+    public static void write2D(char[][] arrays) {
+        for (char[] array : arrays) {
+            for (int i = 1; i < array.length; i++) {
+                System.out.print(array[i] + "\t");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
     public static void write2D(int[][] arrays) {
         for (int[] array : arrays) {
             for (int val : array) {
