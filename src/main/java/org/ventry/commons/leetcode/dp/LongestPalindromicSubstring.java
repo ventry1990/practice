@@ -108,10 +108,4 @@ public class LongestPalindromicSubstring {
 
         return arr.length - 1;
     }
-
-    public static void main(String[] args) {
-        LongestPalindromicSubstring lps = new LongestPalindromicSubstring();
-        System.out.println(lps.longestPalindrome("12212331"));
-        System.out.println(lps.find2("12212321"));
-    }
 }

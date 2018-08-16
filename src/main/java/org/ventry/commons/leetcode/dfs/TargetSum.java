@@ -49,6 +49,9 @@ public class TargetSum {
         return r;
     }
 
+    /**
+     * https://blog.csdn.net/hit0803107/article/details/54894227
+     */
     public int findTargetSumWays2(int[] nums, int S) {
         int sum = 0;
         for (int n : nums) {
@@ -63,6 +66,8 @@ public class TargetSum {
         for (int n : nums) {
             for (int i = s; i >= n; i--) {
                 dp[i] += dp[i - n];
+                // System.out.print(n + " @ " + i + " >> ");
+                // Console.write(s + 1, dp);
             }
         }
         return dp[s];
