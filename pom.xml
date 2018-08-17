@@ -11,10 +11,15 @@
     <url>http://maven.apache.org</url>
 
     <properties>
+        <!-- Compiler Properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdk.version>1.8</jdk.version>
+        <maven.compiler.version>3.6.1</maven.compiler.version>
 
+        <!-- Dependencies -->
         <commons.collection.version>3.2.1</commons.collection.version>
         <commons.lang3.version>3.1</commons.lang3.version>
+        <fastjson.version>1.2.47</fastjson.version>
         <junit.version>3.8.1</junit.version>
     </properties>
 
@@ -35,6 +40,11 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons.lang3.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -42,11 +52,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.1</version>
+                <version>${maven.compiler.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>UTF-8</encoding>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
 
