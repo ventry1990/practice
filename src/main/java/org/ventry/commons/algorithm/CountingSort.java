@@ -6,18 +6,15 @@ package org.ventry.commons.algorithm;
 public class CountingSort {
 
     public static int[] order(int[] source, int bound) {
-        int[] target = new int[source.length];
         int[] countingPool = new int[bound];
-
         for (int i = 0; i < source.length; i++) {
             countingPool[source[i]]++;
         }
-
         for (int i = 1; i < bound; i++) {
             countingPool[i] += countingPool[i - 1];
         }
 
-        // countingPool[source[source.length - 1] = source.length
+        int[] target = new int[source.length];
         for (int i = source.length - 1; i > -1; i--) {
             target[countingPool[source[i]] - 1] = source[i];
             countingPool[source[i]]--;
