@@ -86,6 +86,14 @@ public class ArrayUtils {
         }
     }
 
+    public static void swap(char[] base, int sourceIndex, int targetIndex) {
+        if (sourceIndex != targetIndex) {
+            char temp = base[sourceIndex];
+            base[sourceIndex] = base[targetIndex];
+            base[targetIndex] = temp;
+        }
+    }
+
     public static <T> void swap(T[] base, int sourceIndex, int targetIndex) {
         if (sourceIndex != targetIndex) {
             T temp = base[sourceIndex];
