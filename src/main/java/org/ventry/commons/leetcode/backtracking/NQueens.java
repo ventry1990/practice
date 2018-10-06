@@ -71,10 +71,10 @@ public class NQueens {
     public List<List<String>> solveNQueens2(int n) {
         List<List<String>> res = new ArrayList<>();
         char[][] board = new char[n][n];
+        for (char[] row : board) Arrays.fill(row, '.');
         boolean[] cols = new boolean[n];
         boolean[] d_minus = new boolean[2 * n - 1];
         boolean[] d_plus = new boolean[2 * n - 1];
-        for (char[] row : board) Arrays.fill(row, '.');
         backtracking(res, board, 0, cols, d_minus, d_plus);
         return res;
     }
@@ -99,6 +99,36 @@ public class NQueens {
                 backtracking(res, board, r + 1, cols, d_plus, d_minus);
                 board[r][c] = '.';
                 cols[c] = false;
+                d_plus[d_p] = false;
+                d_minus[d_m] = false;
+            }
+        }
+    }
+
+    public int totalNQueens(int n) {
+        boolean[] cols = new boolean[n];
+        boolean[] d_plus = new boolean[2 * n - 1];// 正对角线
+        boolean[] d_minus = new boolean[2 * n - 1];// 反对角线
+        int[] res = new int[1];
+        backtracking(res, 0, n, cols, d_minus, d_plus);
+        return res[0];
+    }
+
+    private void backtracking(int[] res, int row, int n,
+                              boolean[] cols, boolean[] d_plus, boolean[] d_minus) {
+        if (row == n) {
+            res[0]++;
+            return;
+        }
+        for (int col = 0; col < n; col++) {
+            int d_p = row + col;
+            int d_m = row - col + n - 1;
+            if (!cols[col] && !d_plus[d_p] && !d_minus[d_m]) {
+                cols[col] = true;
+                d_plus[d_p] = true;
+                d_minus[d_m] = true;
+                backtracking(res, row + 1, n, cols, d_plus, d_minus);
+                cols[col] = false;
                 d_plus[d_p] = false;
                 d_minus[d_m] = false;
             }
