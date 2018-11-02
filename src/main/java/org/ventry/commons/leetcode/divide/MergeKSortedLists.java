@@ -70,4 +70,40 @@ public class MergeKSortedLists {
         heap.remove(0);
         return e;
     }
+
+    public ListNode mergeKLists2(ListNode[] lists) {
+        int len;
+        if (lists == null || (len = lists.length) == 0) {
+            return null;
+        }
+        return mergeHelper(0, len - 1, lists);
+
+    }
+
+    private ListNode mergeHelper(int start, int end, ListNode[] lists) {
+        if (start == end) {
+            return lists[start];
+        }
+        int mid = start + (end - start) / 2;
+        ListNode left = mergeHelper(start, mid, lists);
+        ListNode right = mergeHelper(mid + 1, end, lists);
+        return merge(left, right);
+    }
+
+    private ListNode merge(ListNode left, ListNode right) {
+        ListNode dummy = new ListNode(-1);
+        ListNode cur = dummy;
+        while (left != null && right != null) {
+            if (left.val <= right.val) {
+                cur.next = left;
+                left = left.next;
+            } else {
+                cur.next = right;
+                right = right.next;
+            }
+            cur = cur.next;
+        }
+        cur.next = left == null ? right : left;
+        return dummy.next;
+    }
 }
