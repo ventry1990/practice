@@ -127,4 +127,81 @@ public class SpiralMatrix {
         }
         return list;
     }
+
+    public int[][] generateMatrix(int n) {
+        if (n == 1)
+            return new int[][]{{1}};
+
+        int[][] res = new int[n][n];
+        int total = n * n, row = 0, col = 0, rowStart = 0, colStart = -1;
+        boolean left = false, right = true, down = false;
+        for (int i = 1; i <= total; i++) {
+            res[row][col] = i;
+            if (right) {
+                col++;
+                if (col == n) {
+                    col--;
+                    row++;
+                    right = false;
+                    down = true;
+                }
+            } else if (down) {
+                row++;
+                if (row == n) {
+                    row--;
+                    col--;
+                    down = false;
+                    left = true;
+                }
+            } else if (left) {
+                col--;
+                if (col == colStart) {
+                    col++;
+                    i--;
+                    left = false;
+                }
+            } else {
+                row--;
+                if (row == rowStart) {
+                    row++;
+                    col = row;
+                    rowStart = row;
+                    colStart++;
+                    n--;
+                    right = true;
+                }
+            }
+        }
+        return res;
+    }
+
+    public int[][] generateMatrix2(int n) {
+        int[][] res = new int[n][n];
+        int x = 1;
+        int c1 = 0, c2 = n - 1;
+        int r1 = 0, r2 = n - 1;
+        while (r1 <= r2 && c1 <= c2) {
+            //go right
+            for (int i = c1; i <= c2; i++) {
+                res[r1][i] = x++;
+            }
+            //go down
+            for (int i = r1 + 1; i <= r2; i++) {
+                res[i][c2] = x++;
+            }
+            //go left
+            for (int i = c2 - 1; i >= c1; i--) {
+                res[r2][i] = x++;
+            }
+            //go up
+            for (int i = r2 - 1; i > r1; i--) {
+                res[i][c1] = x++;
+            }
+            c1++;
+            c2--;
+            r1++;
+            r2--;
+        }
+        return res;
+    }
 }
