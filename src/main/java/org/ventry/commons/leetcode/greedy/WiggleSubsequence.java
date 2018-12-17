@@ -1,7 +1,5 @@
 package org.ventry.commons.leetcode.greedy;
 
-import org.ventry.commons.utils.Console;
-
 /**
  * file: org.ventry.commons.leetcode.greedy.WiggleSubsequence
  * author: ventry
@@ -37,7 +35,6 @@ public class WiggleSubsequence {
                 stack[top] = nums[i++];
             }
         }
-        Console.write(n + 1, stack);
         return top + 1;
     }
 }

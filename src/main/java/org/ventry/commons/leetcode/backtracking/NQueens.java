@@ -89,7 +89,9 @@ public class NQueens {
             res.add(sol);
         }
         for (int c = 0; c < board[0].length; c++) {
+            // 同一正斜线所占据的棋盘单元行列之和相等
             int d_p = r + c;
+            // 同一反斜线所占据的棋盘单元行列之差相等
             int d_m = r - c + board.length - 1;
             if (!cols[c] && !d_plus[d_p] && !d_minus[d_m]) {
                 board[r][c] = 'Q';
