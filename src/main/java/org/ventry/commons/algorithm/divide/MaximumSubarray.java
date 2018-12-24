@@ -1,4 +1,4 @@
-package org.ventry.commons.algorithm;
+package org.ventry.commons.algorithm.divide;
 
 import org.ventry.commons.utils.Console;
 

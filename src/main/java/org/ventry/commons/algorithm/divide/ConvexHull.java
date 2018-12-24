@@ -1,4 +1,4 @@
-package org.ventry.commons.algorithm;
+package org.ventry.commons.algorithm.divide;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.ventry.commons.utils.Console;
@@ -6,7 +6,7 @@ import org.ventry.commons.utils.Console;
 import java.util.*;
 
 /**
- * file: org.ventry.commons.algorithm.ConvexHull
+ * file: org.ventry.commons.algorithm.divide.ConvexHull
  * author: jojo
  * create: 2017/3/4 16:34
  * description:

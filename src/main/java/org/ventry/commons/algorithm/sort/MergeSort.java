@@ -1,4 +1,4 @@
-package org.ventry.commons.algorithm;
+package org.ventry.commons.algorithm.sort;
 
 public class MergeSort {
 

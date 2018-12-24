@@ -1,4 +1,4 @@
-package org.ventry.commons.algorithm;
+package org.ventry.commons.algorithm.tree;
 
 import org.ventry.commons.utils.ArrayUtils;
 import org.ventry.commons.utils.Console;

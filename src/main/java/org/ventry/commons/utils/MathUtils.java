@@ -23,4 +23,12 @@ public class MathUtils {
         }
         return b;
     }
+
+    public static boolean isOdd(int num) {
+        return (num & 1) == 1;
+    }
+
+    public static boolean isEven(int num) {
+        return (~num & 1) == 1;
+    }
 }

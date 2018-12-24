@@ -1,9 +1,9 @@
-package org.ventry.commons.algorithm;
+package org.ventry.commons.algorithm.divide;
 
 import org.ventry.commons.utils.Console;
 
 /**
- * file: org.ventry.commons.algorithm.NumeralConverter
+ * file: org.ventry.commons.algorithm.divide.NumeralConverter
  * author: ventry
  * create: 18/4/19 20:56
  * description: 不识别〇（零），大写数字等

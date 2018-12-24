@@ -1,4 +1,4 @@
-package org.ventry.commons.algorithm;
+package org.ventry.commons.algorithm.sort;
 
 /**
  * Created by ventry on 16/8/8.

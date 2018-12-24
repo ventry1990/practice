@@ -1,6 +1,6 @@
 package org.ventry.commons.leetcode.divide;
 
-import org.ventry.commons.algorithm.OrderStatistics;
+import org.ventry.commons.algorithm.sort.OrderStatistics;
 
 /**
  * file: org.ventry.commons.leetcode.divide.MedianOfTwoSortedArrays
