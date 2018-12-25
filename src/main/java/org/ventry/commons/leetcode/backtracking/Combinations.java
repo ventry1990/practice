@@ -18,12 +18,12 @@ public class Combinations {
             return res;
 
         int[] one = new int[k + 1];
-        backtracking(res, one, n, 1, k);
+        backtrack(res, one, n, 1, k);
         return res;
     }
 
-    private void backtracking(List<List<Integer>> res, int[] one,
-                              int n, int i, int k) {
+    private void backtrack(List<List<Integer>> res, int[] one,
+                           int n, int i, int k) {
         if (i == k + 1) {
             List<Integer> ans = new ArrayList<>(k);
             for (int j = 1; j < one.length; j++) {
@@ -35,7 +35,7 @@ public class Combinations {
 
         for (int j = one[i - 1] + 1; j <= n; j++) {
             one[i] = j;
-            backtracking(res, one, n, i + 1, k);
+            backtrack(res, one, n, i + 1, k);
         }
     }
 }
