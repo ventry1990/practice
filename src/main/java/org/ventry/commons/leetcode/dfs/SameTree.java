@@ -15,8 +15,8 @@ public class SameTree {
         if (p == null || q == null)
             return p == null && q == null;
 
-        return p.getVal() == q.getVal()
-                && isSameTree(p.getLeft(), q.getLeft())
-                && isSameTree(p.getRight(), q.getRight());
+        return p.val == q.val
+                && isSameTree(p.left, q.left)
+                && isSameTree(p.right, q.right);
     }
 }

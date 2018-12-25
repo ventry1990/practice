@@ -22,8 +22,8 @@ public class BinaryTreeInorderTraversal {
 
     private void walkRecursively(TreeNode root, List<Integer> res) {
         if (root == null) return;
-        walkRecursively(root.getLeft(), res);
-        res.add(root.getVal());
-        walkRecursively(root.getRight(), res);
+        walkRecursively(root.left, res);
+        res.add(root.val);
+        walkRecursively(root.right, res);
     }
 }

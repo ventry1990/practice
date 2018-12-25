@@ -8,31 +8,11 @@ package org.ventry.commons.leetcode;
  */
 
 public class TreeNode {
-    private int val;
-    private TreeNode left;
-    private TreeNode right;
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
 
-    TreeNode(int x) {
+    public TreeNode(int x) {
         val = x;
-    }
-
-    public int getVal() {
-        return val;
-    }
-
-    public TreeNode getLeft() {
-        return left;
-    }
-
-    public void setLeft(TreeNode left) {
-        this.left = left;
-    }
-
-    public TreeNode getRight() {
-        return right;
-    }
-
-    public void setRight(TreeNode right) {
-        this.right = right;
     }
 }

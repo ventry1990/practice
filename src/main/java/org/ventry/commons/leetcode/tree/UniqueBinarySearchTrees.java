@@ -1,5 +1,10 @@
 package org.ventry.commons.leetcode.tree;
 
+import org.ventry.commons.leetcode.TreeNode;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * file: org.ventry.commons.leetcode.tree.UniqueBinarySearchTrees
  * author: ventry
@@ -27,5 +32,62 @@ public class UniqueBinarySearchTrees {
             }
         }
         return dp[n];
+    }
+
+    public List<TreeNode> generateTrees(int n) {
+        return generate(1, n);
+    }
+
+    private List<TreeNode> generate(int s, int e) {
+        List<TreeNode> res = new ArrayList<>();
+        if (s > e) {
+            res.add(null);
+        } else {
+            for (int i = s; i <= e; i++) {
+                List<TreeNode> leftTrees = generate(s, i - 1);
+                List<TreeNode> rightTrees = generate(i + 1, e);
+                for (TreeNode left : leftTrees) {
+                    for (TreeNode right : rightTrees) {
+                        TreeNode root = new TreeNode(i);
+                        root.left = left;
+                        root.right = right;
+                        res.add(root);
+                    }
+                }
+            }
+        }
+        return res;
+    }
+
+    public List<TreeNode> generateTrees2(int n) {
+        @SuppressWarnings("unchecked") List<TreeNode>[] ret = new List[n + 1];
+        ret[0] = new ArrayList<>();
+        if (n == 0) return ret[0];
+
+        ret[0].add(null);
+        for (int i = 1; i <= n; ++i) {
+            ret[i] = new ArrayList<>();
+            for (int j = 0; j < i; ++j) {
+                List<TreeNode> leftTrees = ret[j];
+                List<TreeNode> rightTrees = ret[i - j - 1];
+                for (TreeNode leftSubTree : leftTrees) {
+                    for (TreeNode rightSubTree : rightTrees) {
+                        TreeNode root = new TreeNode(j + 1);
+                        root.left = leftSubTree;
+                        root.right = clone(rightSubTree, j + 1);
+                        ret[i].add(root);
+                    }
+                }
+            }
+        }
+        return ret[n];
+    }
+
+    private TreeNode clone(TreeNode root, int offset) {
+        if (root == null) return null;
+        TreeNode node = new TreeNode(root.val + offset);
+        node.left = clone(root.left, offset);
+        node.right = clone(root.right, offset);
+        return node;
     }
 }
