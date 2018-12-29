@@ -15,6 +15,18 @@ public class ListNode {
         val = x;
     }
 
+    public static ListNode build(int[] src) {
+        if (src == null || src.length == 0)
+            return null;
+        ListNode head = new ListNode(src[0]);
+        ListNode cur = head;
+        for (int i = 1; i < src.length; i++) {
+            cur.next = new ListNode(src[i]);
+            cur = cur.next;
+        }
+        return head;
+    }
+
     @Override
     public String toString() {
         return val + (next != null ? "->" + next.toString() : "");
