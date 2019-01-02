@@ -1,9 +1,9 @@
-package org.ventry.commons.leetcode.hash;
+package org.ventry.commons.leetcode.array;
 
 import java.util.Arrays;
 
 /**
- * file: org.ventry.commons.leetcode.hash.MajorityElement
+ * file: org.ventry.commons.leetcode.array.MajorityElement
  * author: ventry
  * create: 2019/1/2 15:02
  * description:
