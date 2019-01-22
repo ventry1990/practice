@@ -66,8 +66,6 @@ public class TargetSum {
         for (int n : nums) {
             for (int i = s; i >= n; i--) {
                 dp[i] += dp[i - n];
-                // System.out.print(n + " @ " + i + " >> ");
-                // Console.write(s + 1, dp);
             }
         }
         return dp[s];
