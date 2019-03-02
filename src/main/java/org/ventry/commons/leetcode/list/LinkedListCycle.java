@@ -23,36 +23,10 @@ public class LinkedListCycle {
         return false;
     }
 
-    public ListNode detectCycle(ListNode head) {
-        int slowIndex = 0;
-        int fastIndex = 0;
-        ListNode slow = head;
-        ListNode fast = head;
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-            slowIndex++;
-            fastIndex += 2;
-            if (slow == fast) {
-                int cycleSize = fastIndex - slowIndex;
-                ListNode res = head;
-                for (int i = 0; i < cycleSize; i++) {
-                    res = res.next;
-                }
-                while (res != head) {
-                    res = res.next;
-                    head = head.next;
-                }
-                return res;
-            }
-        }
-        return null;
-    }
-
     /**
      * https://leetcode.com/problems/linked-list-cycle-ii/discuss/44793/O(n)-solution-by-using-two-pointers-without-change-anything
      */
-    public ListNode detectCycle2(ListNode head) {
+    public ListNode detectCycle(ListNode head) {
         ListNode slow = head;
         ListNode fast = head;
         while (fast != null && fast.next != null) {
@@ -65,6 +39,32 @@ public class LinkedListCycle {
                     slow2 = slow2.next;
                 }
                 return slow;
+            }
+        }
+        return null;
+    }
+
+    public ListNode _detectCycle(ListNode head) {
+        int slowIndex = 0;
+        int fastIndex = 0;
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            slowIndex++;
+            fastIndex += 2;
+            if (slow == fast) {
+                int k = fastIndex - slowIndex;
+                ListNode res = head;
+                for (int i = 0; i < k; i++) {
+                    res = res.next;
+                }
+                while (res != head) {
+                    res = res.next;
+                    head = head.next;
+                }
+                return res;
             }
         }
         return null;
