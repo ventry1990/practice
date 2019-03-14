@@ -10,6 +10,24 @@ package org.ventry.commons.leetcode.search;
 public class SearchA2DMatrix {
 
     public boolean searchMatrix(int[][] matrix, int target) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) return false;
+
+        int row = matrix.length, col = matrix[0].length;
+        int low = 0, high = row * col;
+        while (low < high) {
+            int mid = (low + high) / 2;
+            if (matrix[mid / col][mid % col] == target)
+                return true;
+            else if (matrix[mid / col][mid % col] < target)
+                low = mid + 1;
+            else
+                high = mid;
+        }
+
+        return false;
+    }
+
+    public boolean _searchMatrix(int[][] matrix, int target) {
         int m, n;
         if (matrix == null || (m = matrix.length) == 0
                 || matrix[0] == null || (n = matrix[0].length - 1) == -1)
@@ -48,20 +66,18 @@ public class SearchA2DMatrix {
     }
 
     public boolean searchMatrix2(int[][] matrix, int target) {
-        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) return false;
+        int m, n;
+        if (matrix == null || (m = matrix.length) == 0
+                || (n = matrix[0].length) == 0)
+            return false;
 
-        int row = matrix.length, col = matrix[0].length;
-        int low = 0, high = row * col;
-        while (low < high) {
-            int mid = (low + high) / 2;
-            if (matrix[mid / col][mid % col] == target)
-                return true;
-            else if (matrix[mid / col][mid % col] < target)
-                low = mid + 1;
-            else
-                high = mid;
+        m = m - 1;
+        int i = 0;
+        while (i < n && m > -1) {
+            if (matrix[m][i] == target) return true;
+            else if (matrix[m][i] > target) m--;
+            else i++;
         }
-
         return false;
     }
 }
