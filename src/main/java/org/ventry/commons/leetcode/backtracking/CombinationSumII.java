@@ -1,6 +1,9 @@
 package org.ventry.commons.leetcode.backtracking;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * file: org.ventry.commons.leetcode.backtracking.CombinationSumII
@@ -36,6 +39,32 @@ public class CombinationSumII {
             if (i != start && candidates[i] == candidates[i - 1]) continue;
             one[length] = candidates[i];
             search(candidates, target - candidates[i], i + 1, one, length + 1, res);
+        }
+    }
+
+    public static List<List<Integer>> combinationSum3(int k, int n) {
+        List<List<Integer>> res = new ArrayList<>();
+        search(n, 1, new int[k], 0, res);
+        return res;
+    }
+
+    private static void search(int target, int start, int[] one, int length,
+                               List<List<Integer>> res) {
+        if (length == one.length) {
+            if (target == 0) {
+                List<Integer> l = new ArrayList<>(length);
+                for (int i : one) {
+                    l.add(i);
+                }
+                res.add(l);
+            }
+            return;
+        }
+
+        for (int i = start; i < 10; i++) {
+            if (target < i) return;
+            one[length] = i;
+            search(target - i, i + 1, one, length + 1, res);
         }
     }
 }
