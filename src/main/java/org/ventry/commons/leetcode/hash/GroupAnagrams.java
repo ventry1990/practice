@@ -34,7 +34,7 @@ public class GroupAnagrams {
     }
 
     private Long keyOf(String str) {
-        Long key = 1L;
+        long key = 1L;
         for (int i = 0; i < str.length(); i++) {
             key *= prime[str.charAt(i) - 'a'];
         }
