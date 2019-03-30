@@ -1,7 +1,7 @@
-package org.ventry.commons.leetcode.list;
+package org.ventry.commons.leetcode.array;
 
 /**
- * file: org.ventry.commons.leetcode.list.SubarraySumEqualsK
+ * file: org.ventry.commons.leetcode.array.SubarraySumEqualsK
  * author: ventry
  * create: 2019/3/30 11:47
  * description:
