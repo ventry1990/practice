@@ -16,4 +16,28 @@ public class SingleNumber {
         }
         return num;
     }
+
+    /**
+     * https://leetcode.com/problems/single-number-ii/discuss/43294/Challenge-me-thx
+     */
+    public int singleNumberII(int[] nums) {
+        int once = 0, twice = 0;
+        for (int num : nums) {
+            once = ~twice & (once ^ num);
+            twice = ~once & (twice ^ num);
+        }
+        return once;
+    }
+
+    public int _singleNumberII(int[] nums) {
+        int res = 0;
+        for (int i = 0; i < 32; i++) {
+            int sumInBit = 0;
+            for (int num : nums) {
+                sumInBit += (num >>> i) & 1;
+            }
+            res |= (sumInBit % 3) << i;
+        }
+        return res;
+    }
 }
