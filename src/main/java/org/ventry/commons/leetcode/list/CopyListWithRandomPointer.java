@@ -41,4 +41,39 @@ public class CopyListWithRandomPointer {
         }
         return anchor.next;
     }
+
+    public Node copyRandomList2(Node head) {
+        if (head == null)
+            return null;
+
+        Node holder = head;
+        while (head != null) {
+            Node cur = new Node();
+            cur.val = head.val;
+            cur.next = head.next;
+            head.next = cur;
+            head = cur.next;
+        }
+
+        head = holder;
+        Node result = holder.next;
+        while (head != null) {
+            if (head.random != null)
+                head.next.random = head.random.next;
+            head = head.next.next;
+        }
+
+        head = holder;
+        Node copy = head.next;
+        while (head != null) {
+            head.next = head.next.next;
+            head = head.next;
+            if (copy.next != null) {
+                copy.next = copy.next.next;
+                copy = copy.next;
+            }
+        }
+
+        return result;
+    }
 }
