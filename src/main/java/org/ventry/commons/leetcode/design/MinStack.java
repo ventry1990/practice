@@ -1,7 +1,7 @@
-package org.ventry.commons.leetcode;
+package org.ventry.commons.leetcode.design;
 
 /**
- * file: org.ventry.commons.leetcode.MinStack
+ * file: org.ventry.commons.leetcode.design.MinStack
  * author: ventry
  * create: 2018/12/29 19:48
  * description:

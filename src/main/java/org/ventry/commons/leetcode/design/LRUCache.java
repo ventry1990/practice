@@ -1,10 +1,10 @@
-package org.ventry.commons.leetcode;
+package org.ventry.commons.leetcode.design;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * file: org.ventry.commons.leetcode.LRUCache
+ * file: org.ventry.commons.leetcode.design.LRUCache
  * author: ventry
  * create: 2019/1/11 18:39
  * description:

@@ -1,11 +1,13 @@
-package org.ventry.commons.leetcode;
+package org.ventry.commons.leetcode.design;
+
+import org.ventry.commons.leetcode.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
- * file: org.ventry.commons.leetcode.Codec
+ * file: org.ventry.commons.leetcode.design.Codec
  * author: ventry
  * create: 2020/4/10 00:41
  * description:
