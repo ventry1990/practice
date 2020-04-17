@@ -1,10 +1,10 @@
-package org.ventry.commons.leetcode.string;
+package org.ventry.commons.leetcode.window;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * file: org.ventry.commons.leetcode.string.MinimumWindowSubstring
+ * file: org.ventry.commons.leetcode.window.MinimumWindowSubstring
  * author: ventry
  * create: 2018/11/2 18:59
  * description:

@@ -1,4 +1,4 @@
-package org.ventry.commons.leetcode.hash;
+package org.ventry.commons.leetcode.window;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * file: org.ventry.commons.leetcode.hash.LongestSubstringWithoutRepeatingCharacters
+ * file: org.ventry.commons.leetcode.window.LongestSubstringWithoutRepeatingCharacters
  * author: jojo
  * create: 2017/5/11 20:03
  * description:
