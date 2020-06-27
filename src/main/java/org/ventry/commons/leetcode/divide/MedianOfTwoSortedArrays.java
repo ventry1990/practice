@@ -8,7 +8,6 @@ import org.ventry.commons.algorithm.sort.OrderStatistics;
  * create: 2017/5/12 10:00
  * description:
  */
-
 public class MedianOfTwoSortedArrays {
 
     public double findMedianSortedArrays(int[] numbers1, int[] numbers2) {
@@ -37,19 +36,23 @@ public class MedianOfTwoSortedArrays {
         }
     }
 
+    /**
+     * https://leetcode-cn.com/problems/median-of-two-sorted-arrays/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-w-2/
+     */
     public double find2(int[] numbers1, int[] numbers2) {
         int lengthOfN1 = numbers1.length;
         int lengthOfN2 = numbers2.length;
         if (lengthOfN1 < lengthOfN2) return find2(numbers2, numbers1);    // Make sure numbers2 is the shorter one.
 
-        if (lengthOfN2 == 0) return ((double) numbers1[(lengthOfN1 - 1) / 2] + (double) numbers1[lengthOfN1 / 2]) / 2;  // If numbers2 is empty
+        if (lengthOfN2 == 0)
+            return ((double) numbers1[(lengthOfN1 - 1) / 2] + (double) numbers1[lengthOfN1 / 2]) / 2;  // If numbers2 is empty
 
         int low = 0, high = lengthOfN2 * 2;
         while (low <= high) {
             int mid2 = (low + high) / 2;   // Try Cut 2
             int mid1 = lengthOfN1 + lengthOfN2 - mid2;  // Calculate Cut 1 accordingly
 
-            double l1 = (mid1 == 0) ? Integer.MIN_VALUE : numbers1[(mid1 - 1) / 2];    // Get l1, R1, L2, R2 respectively
+            double l1 = (mid1 == 0) ? Integer.MIN_VALUE : numbers1[(mid1 - 1) / 2];    // Get L1, R1, L2, R2 respectively
             double l2 = (mid2 == 0) ? Integer.MIN_VALUE : numbers2[(mid2 - 1) / 2];
             double r1 = (mid1 == lengthOfN1 * 2) ? Integer.MAX_VALUE : numbers1[(mid1) / 2];
             double r2 = (mid2 == lengthOfN2 * 2) ? Integer.MAX_VALUE : numbers2[(mid2) / 2];
@@ -60,15 +63,5 @@ public class MedianOfTwoSortedArrays {
         }
 
         return -1;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new MedianOfTwoSortedArrays().findMedianSortedArrays(new int[] {1, 3}, new int[] {2}));
-        System.out.println(new MedianOfTwoSortedArrays().findMedianSortedArrays(new int[] {1, 3}, new int[] {2, 4}));
-        System.out.println(new MedianOfTwoSortedArrays().findMedianSortedArrays(new int[] {1, 3}, new int[0]));
-
-        System.out.println(new MedianOfTwoSortedArrays().find2(new int[] {1, 3}, new int[] {2}));
-        System.out.println(new MedianOfTwoSortedArrays().find2(new int[] {1, 3}, new int[] {2, 4}));
-        System.out.println(new MedianOfTwoSortedArrays().find2(new int[] {1, 3}, new int[0]));
     }
 }
