@@ -20,7 +20,7 @@
         <commons.collection.version>3.2.1</commons.collection.version>
         <commons.lang3.version>3.1</commons.lang3.version>
         <fastjson.version>1.2.47</fastjson.version>
-        <junit.version>3.8.1</junit.version>
+        <junit.version>4.13.1</junit.version>
     </properties>
 
     <dependencies>
